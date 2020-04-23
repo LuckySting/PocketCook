@@ -30,7 +30,6 @@
         {
             this.RefrigeratorButton = new System.Windows.Forms.Button();
             this.CookBookButton = new System.Windows.Forms.Button();
-            this.ProductCartButton = new System.Windows.Forms.Button();
             this.ProductsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,15 +53,6 @@
             this.CookBookButton.UseVisualStyleBackColor = true;
             this.CookBookButton.Click += new System.EventHandler(this.CookBookButton_Click);
             // 
-            // ProductCartButton
-            // 
-            this.ProductCartButton.Location = new System.Drawing.Point(12, 261);
-            this.ProductCartButton.Name = "ProductCartButton";
-            this.ProductCartButton.Size = new System.Drawing.Size(279, 61);
-            this.ProductCartButton.TabIndex = 2;
-            this.ProductCartButton.Text = "Product cart";
-            this.ProductCartButton.UseVisualStyleBackColor = true;
-            // 
             // ProductsButton
             // 
             this.ProductsButton.Location = new System.Drawing.Point(12, 178);
@@ -77,9 +67,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 336);
+            this.ClientSize = new System.Drawing.Size(303, 253);
             this.Controls.Add(this.ProductsButton);
-            this.Controls.Add(this.ProductCartButton);
             this.Controls.Add(this.CookBookButton);
             this.Controls.Add(this.RefrigeratorButton);
             this.Font = new System.Drawing.Font("Microsoft JhengHei UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,7 +84,6 @@
 
         private System.Windows.Forms.Button RefrigeratorButton;
         private System.Windows.Forms.Button CookBookButton;
-        private System.Windows.Forms.Button ProductCartButton;
         private System.Windows.Forms.Button ProductsButton;
     }
 }

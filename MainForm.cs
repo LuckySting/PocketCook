@@ -25,7 +25,8 @@ namespace PocketCook
 
         private void RefrigeratorButton_Click(object sender, EventArgs e)
         {
-
+            var refrigeratorForm = new RefrigeratorForm();
+            refrigeratorForm.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

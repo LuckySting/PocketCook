@@ -71,5 +71,30 @@ namespace PocketCook
                 MessageBox.Show(ingridients + "--------------------\n" + recipeDescription);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var recipeNames = new List<String>();
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                if (this.dataGridView1.Rows[i].Cells[5].Value != null && (bool)this.dataGridView1.Rows[i].Cells[5].Value)
+                {
+                    this.dataGridView1.Rows[i].Cells[5].Value = false;
+                    recipeNames.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            var products = Program.db.getMissingProducts(recipeNames.ToArray());
+            var cart = new List<string>();
+            double totalPrice = 0;
+            foreach (var product in products)
+            {
+                cart.Add(product["productName"] + " " + product["needed"] + "g");
+                totalPrice += Double.Parse(product["price"].ToString());
+            }
+            cart.Add("\n");
+            cart.Add("Total price: " + totalPrice);
+            var cartForm = new CartForm(cart.ToArray()); ;
+            cartForm.ShowDialog();
+        }
     }
 }

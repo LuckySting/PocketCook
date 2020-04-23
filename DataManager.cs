@@ -140,11 +140,11 @@ namespace PocketCook
         List<String> getProductNames();
 
         /// <summary>
-        /// Метод должен возвращать список продуктов, которые надо докупить для рецепта
+        /// Метод должен возвращать список продуктов, которые надо докупить для рецептов
         /// </summary>
-        /// <param name="recipeName">Название рецепта</param>
+        /// <param name="recipeNames">Список названий рецептов</param>
         /// <returns>Список необходимых продуктов</returns>
-        List<Dictionary<string, object>> getMissingProducts(string recipeName);
+        List<Dictionary<string, object>> getMissingProducts(string[] recipeNames);
 
         /// <summary>
         /// Метод должен возвращать продукт по его имени, если продукта нет, выбрасывается исключение
@@ -369,13 +369,18 @@ namespace PocketCook
 
             return data;
         }
-        public List<Dictionary<string, object>> getMissingProducts(string recipeName)
+        public List<Dictionary<string, object>> getMissingProducts(string[] recipeNames)
         {
-            
-            var cmd = new SQLiteCommand("SELECT PR.productName, case when PR.quantity - IFNULL(AP.quantity, 0) > 0 then PR.quantity - IFNULL(AP.quantity, 0) else 0 end as needed "
-                + "FROM (RECIPE JOIN (NECESSARY_PRODUCT JOIN PRODUCT USING (productName)) USING (recipeName)) PR LEFT JOIN AVAILABLE_PRODUCT AP "
-                + "ON PR.productName = AP.productName WHERE PR.recipeName=@recipeName AND needed > 0;", this.db);
-            cmd.Parameters.AddWithValue("@recipeName", recipeName);
+            var recipesString = "'" + String.Join("', '", recipeNames) + "'";
+            var cmdText = "SELECT productName, needed, round((cast(price as real) / 100) * needed, 2) as price " +
+                "FROM ( SELECT productName, SUM(quantity) AS needed " +
+                "FROM (SELECT productName, SUM(quantity) AS quantity " +
+                "FROM (RECIPE JOIN (NECESSARY_PRODUCT JOIN PRODUCT USING (productName)) NP " +
+                "ON RECIPE.recipeName = NP.recipeName AND RECIPE.recipeName IN (" + recipesString + ")) " +
+                "GROUP BY productName UNION SELECT productName, -quantity AS quantity FROM AVAILABLE_PRODUCT) " +
+                "GROUP BY productName HAVING needed > 0 ) " +
+                "JOIN PRODUCT USING(productName);";
+            var cmd = new SQLiteCommand(cmdText, this.db);
             var reader = cmd.ExecuteReader();
             var data = new List<Dictionary<string, object>>();
             if (reader.HasRows)

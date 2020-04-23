@@ -98,6 +98,11 @@
             // 
             this.CaloriesInput.DecimalPlaces = 2;
             this.CaloriesInput.Location = new System.Drawing.Point(147, 147);
+            this.CaloriesInput.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
             this.CaloriesInput.Name = "CaloriesInput";
             this.CaloriesInput.Size = new System.Drawing.Size(301, 22);
             this.CaloriesInput.TabIndex = 9;
@@ -106,6 +111,11 @@
             // 
             this.PriceInput.DecimalPlaces = 2;
             this.PriceInput.Location = new System.Drawing.Point(147, 81);
+            this.PriceInput.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
             this.PriceInput.Name = "PriceInput";
             this.PriceInput.Size = new System.Drawing.Size(301, 22);
             this.PriceInput.TabIndex = 10;

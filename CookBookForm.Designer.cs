@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.AddNewProductButton = new System.Windows.Forms.Button();
             this.recipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.recipeDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.calories = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.available = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addToCartButton = new PocketCook.DataGridViewDisableButtonColumn();
+            this.addToCartCheckBox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.AddNewProductButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.calories,
             this.price,
             this.available,
-            this.addToCartButton});
+            this.addToCartCheckBox});
             this.dataGridView1.Location = new System.Drawing.Point(12, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -61,18 +62,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserDeletedRow);
-            // 
-            // AddNewProductButton
-            // 
-            this.AddNewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddNewProductButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddNewProductButton.Location = new System.Drawing.Point(1042, 12);
-            this.AddNewProductButton.Name = "AddNewProductButton";
-            this.AddNewProductButton.Size = new System.Drawing.Size(50, 50);
-            this.AddNewProductButton.TabIndex = 2;
-            this.AddNewProductButton.Text = "+";
-            this.AddNewProductButton.UseVisualStyleBackColor = true;
-            this.AddNewProductButton.Click += new System.EventHandler(this.AddNewProductButton_Click);
             // 
             // recipeName
             // 
@@ -120,19 +109,43 @@
             this.available.ToolTipText = "Ingridients in refrigerator";
             this.available.Width = 125;
             // 
-            // addToCartButton
+            // addToCartCheckBox
             // 
-            this.addToCartButton.HeaderText = "Add missings to cart";
-            this.addToCartButton.MinimumWidth = 6;
-            this.addToCartButton.Name = "addToCartButton";
-            this.addToCartButton.Text = "Add missings to cart";
-            this.addToCartButton.Width = 125;
+            this.addToCartCheckBox.HeaderText = "Add missings to cart";
+            this.addToCartCheckBox.MinimumWidth = 6;
+            this.addToCartCheckBox.Name = "addToCartCheckBox";
+            this.addToCartCheckBox.Width = 125;
+            // 
+            // AddNewProductButton
+            // 
+            this.AddNewProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewProductButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddNewProductButton.Location = new System.Drawing.Point(1042, 12);
+            this.AddNewProductButton.Name = "AddNewProductButton";
+            this.AddNewProductButton.Size = new System.Drawing.Size(50, 50);
+            this.AddNewProductButton.TabIndex = 2;
+            this.AddNewProductButton.Text = "+";
+            this.AddNewProductButton.UseVisualStyleBackColor = true;
+            this.AddNewProductButton.Click += new System.EventHandler(this.AddNewProductButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Image = global::PocketCook.Properties.Resources.baseline_shopping_cart_black_24dp1;
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 50);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CookBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1104, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.AddNewProductButton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "CookBookForm";
@@ -151,6 +164,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn calories;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn available;
-        private DataGridViewDisableButtonColumn addToCartButton;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn addToCartCheckBox;
+        private System.Windows.Forms.Button button1;
     }
 }
